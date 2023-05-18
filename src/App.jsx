@@ -1,10 +1,15 @@
+import { Outlet } from 'react-router-dom'
 import './App.css'
+import Footer from './component/Shared/Footer/Footer'
+import Header from './component/Shared/Header/Header'
 
 function App() {
 
   return (
     <>
-      <h1>hi this is toy website</h1>
+      <Header></Header>
+      <Outlet></Outlet>
+      <Footer></Footer>
     </>
   )
 }
