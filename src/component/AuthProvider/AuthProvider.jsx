@@ -35,12 +35,14 @@ const AuthProvider = ({ children }) => {
 
     // =============== logout email =================
     const signinGoogel = () => {
+        setLoading(true)
         return signInWithPopup(auth , googleAuth)
     }
 
 
     // =============== logout email =================
     const signinGithub = () => {
+        setLoading(true)
         return signInWithPopup(auth , githubAuth)
     }
 

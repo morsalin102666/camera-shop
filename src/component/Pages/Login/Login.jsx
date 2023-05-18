@@ -1,8 +1,11 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
+    const navigate = useNavigate()
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     const [error, setError] = useState('')
     const { logInEmail, signinGoogel, signinGithub } = useContext(AuthContext)
 
@@ -19,7 +22,9 @@ const Login = () => {
         logInEmail(email, password)
             .then(result => {
                 console.log(result)
+                navigate(from, { replace: true });
                 form.reset()
+
             })
             .catch(error => setError(error.message))
     }
@@ -28,7 +33,10 @@ const Login = () => {
     const googeLogin = () => {
         setError('')
         signinGoogel()
-        .then(result => {console.log(result)})
+        .then(result => {
+            console.log(result)
+            navigate(from, { replace: true });
+        })
         .catch(error => {setError(error.message)})
     }
 
@@ -37,7 +45,10 @@ const Login = () => {
     const githubLogin = () => {
         setError('')
         signinGithub()
-        .then(result => {console.log(result)})
+        .then(result => {
+            console.log(result)
+            navigate(from, { replace: true });
+        })
         .catch(error => {setError(error.message)})
     }
 
