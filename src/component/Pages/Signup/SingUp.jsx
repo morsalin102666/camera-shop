@@ -1,9 +1,49 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const SingUp = () => {
+    const [error, setError] = useState('')
+    const { createNewUser, updateUserProfile } = useContext(AuthContext)
 
-    const signUpPage = () =>{
-        console.log('hi')
+    const signUpPage = event => {
+        event.preventDefault()
+
+        setError('')
+
+        const form = event.target;
+        const userName = form.userName.value;
+        const photoUrl = form.photoUrl.value;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        if (password.length >= 6) {
+            createNewUser(email, password)
+                .then(result => {
+                    alert('success signUp')
+                    console.log(result)
+                    updateProfileUser(userName, photoUrl)
+                    form.reset()
+                })
+                .catch(error => {
+                    setError(error.message)
+                })
+        }
+        else {
+            return alert('plesh musbe 6 carector password')
+        }
+
+        const updateProfileUser = (userName, photoUrl) => {
+            const profile = {
+                photoURL: photoUrl,
+                displayName: userName
+            }
+            updateUserProfile(profile)
+            .then(result => {console.log(result.user)})
+            .catch(error => {setError(error.message)})
+        }
+
+
     }
 
     return (
@@ -18,7 +58,7 @@ const SingUp = () => {
                                     <label className="label">
                                         <span className="label-text">User name</span>
                                     </label>
-                                    <input type="text" required name="userName" placeholder="email" className="input input-bordered" />
+                                    <input type="text" required name="userName" placeholder="User Name" className="input input-bordered" />
                                 </div>
                                 <div className="form-control w-[47%]">
                                     <label className="label">
@@ -39,11 +79,11 @@ const SingUp = () => {
                                 </label>
                                 <input type="password" required name="password" placeholder="password" className="input input-bordered" />
                             </div>
-                            <p className="mt-5 ml-3"></p>
+                            <p className="mt-5 ml-3">{error}</p>
                             <div className="form-control mt-6">
                                 <button className="btn btn-[gray]">Sign Up</button>
                             </div>
-                            <Link className="mt-5 text-center hover:underline" to={'/Login'}><p >Alrady have a account to <span className="font-bold text-blue-900">Login</span></p></Link>
+                            <Link className="mt-5 text-center hover:underline" to={'/login'}><p >Alrady have a account to <span className="font-bold text-blue-900">Login</span></p></Link>
                         </form>
                     </div>
                 </div>

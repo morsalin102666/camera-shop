@@ -1,6 +1,14 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Header = () => {
+
+    const { user, logOutEmail } = useContext(AuthContext)
+    const logOutButton = () => {
+        logOutEmail()
+    }
+
     return (
         <div className="bg-base-300 mb-[50px]">
             <div className="navbar bg-base-300 container mx-auto">
@@ -27,24 +35,36 @@ const Header = () => {
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                    <li><Link to={'/'}>Home</Link></li>
-                    <li><Link to={'/login'}>Login</Link></li>
-                    <li><Link to={'/signUp'}>SignUp</Link></li>
+                        <li><Link to={'/'}>Home</Link></li>
+                        <li><Link to={'/login'}>Login</Link></li>
+                        <li><Link to={'/signUp'}>SignUp</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <div className="dropdown dropdown-end">
-                        <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                            <div className="w-10 rounded-full">
-                                <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                    {
+                        user
+                            ?
+                            <div className="dropdown dropdown-end">
+                                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        <img src={user.photoURL} />
+                                    </div>
+                                </label>
+                                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-300 rounded-box w-52">
+                                    {
+                                        user.displayName && <li><a>{user.displayName}</a></li>
+                                    }
+                                    {
+                                        user.email && <li><a>{user.email}</a></li>
+                                    }
+                                    <div className="flex justify-center mt-3">
+                                        <button onClick={logOutButton} className="btn btn-outline">SignOut</button>
+                                    </div>
+                                </ul>
                             </div>
-                        </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-300 rounded-box w-52">
-                            <li><a>Item 1</a></li>
-                            <li><a>Item 2</a></li>
-                            <li><a>Item 3</a></li>
-                        </ul>
-                    </div>
+                            :
+                            <dvi><Link to={'/login'} className="btn btn-outline">Login</Link></dvi>
+                    }
                 </div>
             </div>
         </div>

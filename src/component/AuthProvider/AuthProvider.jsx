@@ -1,17 +1,58 @@
-import { createContext, useState } from "react";
-import { getAuth } from "firebase/auth";
+import { createContext, useEffect, useState } from "react";
+import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
 import app from "../Firebase/Firebase";
 
 export const AuthContext = createContext(null)
 const auth = getAuth(app)
 
-const AuthProvider = ({children}) => {
+const AuthProvider = ({ children }) => {
     const [user, setUser] = useState([])
-    const [loading, useLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
+
+    // =============== create a new user email or pass =================
+    const createNewUser = (email, password) => {
+        // setLoading(true)
+        return createUserWithEmailAndPassword(auth, email, password)
+    }
+
+    // =============== update email userName or photoUrl =================
+    const updateUserProfile = (profile) => {
+        return updateProfile(auth.currentUser, profile)
+    }
+
+     // =============== login email ==================
+     const logInEmail = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+     }
+
+
+     // =============== logout email =================
+    const logOutEmail = () => {
+        return signOut(auth)
+    }
+
+    // =============== set user =================
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser)
+            setLoading(false)
+        })
+
+        return () => {
+            return unsubscribe()
+        }
+
+    }, [])
+
+
 
     const authInfo = {
         user,
-        loading
+        loading,
+        createNewUser,
+        updateUserProfile,
+        logOutEmail,
+        logInEmail
     }
 
     return (

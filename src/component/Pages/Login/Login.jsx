@@ -1,9 +1,24 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
+    const [error, setError] = useState('')
+    const { logInEmail } = useContext(AuthContext)
 
-    const loginPage = () =>{
-        console.log('hi')
+    const loginPage = event => {
+        event.preventDefault()
+
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        logInEmail(email, password)
+            .then(result => {
+                console.log(result)
+                form.reset()
+            })
+            .catch(error => setError(error.message))
     }
 
     return (
@@ -28,7 +43,7 @@ const Login = () => {
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
                             </div>
-                            <p className="mt-5 ml-3"></p>
+                            <p className="mt-5 ml-3">{error}</p>
                             <div className="form-control mt-6">
                                 <button className="btn bg-[gray] hover:bg-[gray]">Login</button>
                             </div>
