@@ -4,8 +4,9 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
     const [error, setError] = useState('')
-    const { logInEmail } = useContext(AuthContext)
+    const { logInEmail, signinGoogel } = useContext(AuthContext)
 
+    // ============ signIn email password ===========
     const loginPage = event => {
         event.preventDefault()
 
@@ -19,6 +20,13 @@ const Login = () => {
                 form.reset()
             })
             .catch(error => setError(error.message))
+    }
+
+    // ============ signIn google ===========
+    const googeLogin = () => {
+        signinGoogel()
+        .then(result => {console.log(result)})
+        .catch(error => {setError(error.message)})
     }
 
     return (
@@ -48,7 +56,7 @@ const Login = () => {
                                 <button className="btn bg-[gray] hover:bg-[gray]">Login</button>
                             </div>
                             <div className=" mt-5">
-                                <button className="w-[100%] rounded btn btn-outline hover:bg-[gray] mb-3">Sign in with Google</button>
+                                <button onClick={googeLogin} className="w-[100%] rounded btn btn-outline hover:bg-[gray] mb-3">Sign in with Google</button>
                                 <button className="w-[100%] rounded btn btn-outline hover:bg-[gray]">Sign in with Github</button>
                             </div>
                             <Link className="mt-5 text-center hover:underline" to={'/signUp'}><p >New user to create a account <span className="font-bold text-blue-900">Sign up</span></p></Link>
