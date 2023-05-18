@@ -4,11 +4,13 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const Login = () => {
     const [error, setError] = useState('')
-    const { logInEmail, signinGoogel } = useContext(AuthContext)
+    const { logInEmail, signinGoogel, signinGithub } = useContext(AuthContext)
 
     // ============ signIn email password ===========
     const loginPage = event => {
         event.preventDefault()
+
+        setError('')
 
         const form = event.target;
         const email = form.email.value;
@@ -24,7 +26,17 @@ const Login = () => {
 
     // ============ signIn google ===========
     const googeLogin = () => {
+        setError('')
         signinGoogel()
+        .then(result => {console.log(result)})
+        .catch(error => {setError(error.message)})
+    }
+
+
+    // ============ signIn github ===========
+    const githubLogin = () => {
+        setError('')
+        signinGithub()
         .then(result => {console.log(result)})
         .catch(error => {setError(error.message)})
     }
@@ -57,7 +69,7 @@ const Login = () => {
                             </div>
                             <div className=" mt-5">
                                 <button onClick={googeLogin} className="w-[100%] rounded btn btn-outline hover:bg-[gray] mb-3">Sign in with Google</button>
-                                <button className="w-[100%] rounded btn btn-outline hover:bg-[gray]">Sign in with Github</button>
+                                <button onClick={githubLogin} className="w-[100%] rounded btn btn-outline hover:bg-[gray]">Sign in with Github</button>
                             </div>
                             <Link className="mt-5 text-center hover:underline" to={'/signUp'}><p >New user to create a account <span className="font-bold text-blue-900">Sign up</span></p></Link>
                         </form>
