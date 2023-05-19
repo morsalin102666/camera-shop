@@ -37,7 +37,6 @@ const AllToy = () => {
                                     data={data}
                                 ></ShowToy>)
                             }
-                            <hr />
                         </tbody>
                     </table>
                 </div>

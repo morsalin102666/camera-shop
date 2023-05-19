@@ -9,6 +9,7 @@ import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import MyToy from "../Pages/MyToy/MyToy";
 import AddToy from "../Pages/AddToy/AddToy";
 import UpdateToy from "../Pages/UpdateToy/UpdateToy";
+import AllToyDetail from "../Pages/AllToy/AllToyDetail/AllToyDetail";
 
 const router = createBrowserRouter([
     {
@@ -22,6 +23,11 @@ const router = createBrowserRouter([
             {
                 path: '/allToy',
                 element: <AllToy></AllToy>
+            },
+            {
+                path: "allToyDetail/:id",
+                element: <AllToyDetail></AllToyDetail>,
+                loader: ({params}) => fetch(`http://localhost:5000/cameras/${params.id}`)
             },
             {
                 path: '/myToy',

@@ -8,7 +8,6 @@ const Tabs = () => {
     const [toggleState, setToggleState] = useState(1);
     const [post, setPost] = useState([])
     const [drone, setDrone] = useState([])
-    console.log(drone)
 
     const toggleTab = (index) => {
         setToggleState(index);
@@ -20,9 +19,9 @@ const Tabs = () => {
             .then(data => setPost(data))
     }, [])
 
-    {
-        post.map(p => console.log(p))
-    }
+    // {
+    //     post.map(p => console.log(p))
+    // }
 
 
 
