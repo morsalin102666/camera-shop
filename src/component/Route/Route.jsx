@@ -4,10 +4,10 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import SingUp from "../Pages/Signup/SingUp";
 import AllToy from "../Pages/AllToy/AllToy/AllToy";
-import MyToy from "../Pages/MyToy/MyToy/MyToy";
-import AddToy from "../Pages/AddToy/AddToy/AddToy";
 import Blog from "../Pages/Blog/Blog";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
+import MyToy from "../Pages/MyToy/MyToy";
+import AddToy from "../Pages/AddToy/AddToy";
 
 const router = createBrowserRouter([
     {

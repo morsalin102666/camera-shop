@@ -26,7 +26,7 @@ const Header = () => {
                             <li><Link to={'/signUp'}>SignUp</Link></li>
                         </ul>
                     </div>
-                    <Link to={'/'} className="btn btn-ghost normal-case text-xl">daisyUI</Link>
+                    <Link to={'/'} className="btn btn-ghost normal-case text-xl text-[35px] font-bold">Camera Shop <img className="w-[50px]" src="https://www.freepnglogos.com/uploads/camera-logo-png/artful-wonder-photography-logo-10.png" alt="" /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
