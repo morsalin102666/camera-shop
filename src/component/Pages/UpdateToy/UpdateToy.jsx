@@ -42,25 +42,25 @@ const UpdateToy = () => {
                     <div className="grid md:grid-cols-2 gap-8" >
                         <div>
                             <label className="block mb-4 font-bold">Seller Name</label>
-                            <input className="border px-3 py-3 w-full rounded-md"  type="text" name="selarName" defaultValue={selarName} />
+                            <input className="border px-3 py-3 w-full rounded-md"  type="text" name="selarName"/>
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Email</label>
-                            <input className="border px-3 py-3 w-full rounded-md"  type="text" name="email" defaultValue={email}/>
+                            <input className="border px-3 py-3 w-full rounded-md"  type="text" name="email"/>
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Name</label>
-                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="name" defaultValue={name}/>
+                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="name"/>
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Picture URL</label>
-                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="photoUrl" defaultValue={photoUrl}/>
+                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="photoUrl"/>
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Sub-category</label>
                             {/* <input className="border px-3 py-3 w-full rounded-md" type="select" name="subCategory" placeholder="Sub-category" /> */}
                             <select name="subCategory" className="border px-3 py-3 w-full rounded-md">
-                                <option disabled selected defaultValue={subCategory}></option>
+                                <option disabled selected></option>
                                 <option>Drone</option>
                                 <option>DSLR</option>
                                 <option>HD Camera</option>
@@ -68,20 +68,20 @@ const UpdateToy = () => {
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Price</label>
-                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="price" defaultValue={price}/>
+                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="price"/>
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Rating</label>
-                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="rating" defaultValue={rating}/>
+                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="rating"/>
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Available quantity</label>
-                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="quantity"  defaultValue={quantity}/>
+                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="quantity"/>
                         </div>
                     </div>
                     <div>
                         <label className="block my-4 font-bold">Detail description</label>
-                        <textarea className="border px-3 py-3 w-full  h-[200px] rounded-md"  name="description" defaultValue={description}></textarea>
+                        <textarea className="border px-3 py-3 w-full  h-[200px] rounded-md"  name="description"></textarea>
                     </div>
                     <div className="mt-10">
                         <input className="btn btn-outline w-full font-bold hover:bg-gray-500" type="submit" value="Add A Toy" />

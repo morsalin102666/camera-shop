@@ -6,10 +6,10 @@ import SingUp from "../Pages/Signup/SingUp";
 import AllToy from "../Pages/AllToy/AllToy/AllToy";
 import Blog from "../Pages/Blog/Blog";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
-import MyToy from "../Pages/MyToy/MyToy";
 import AddToy from "../Pages/AddToy/AddToy";
 import UpdateToy from "../Pages/UpdateToy/UpdateToy";
 import AllToyDetail from "../Pages/AllToy/AllToyDetail/AllToyDetail";
+import MyToy from "../Pages/MyToy/MyToy/MyToy";
 
 const router = createBrowserRouter([
     {
