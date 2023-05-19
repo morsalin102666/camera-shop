@@ -26,7 +26,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "allToyDetail/:id",
-                element: <AllToyDetail></AllToyDetail>,
+                element: <PrivetRoute><AllToyDetail></AllToyDetail></PrivetRoute>,
                 loader: ({params}) => fetch(`http://localhost:5000/cameras/${params.id}`)
             },
             {
