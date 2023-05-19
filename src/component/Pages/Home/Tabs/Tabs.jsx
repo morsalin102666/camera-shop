@@ -14,7 +14,7 @@ const Tabs = () => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/cameras`)
+        fetch(`https://toys-server-site-morsalin102666.vercel.app/cameras`)
             .then(res => res.json())
             .then(data => setPost(data))
     }, [])

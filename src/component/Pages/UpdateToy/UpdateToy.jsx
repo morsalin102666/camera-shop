@@ -1,5 +1,10 @@
+import { useLoaderData } from "react-router-dom";
 
 const UpdateToy = () => {
+
+    const datas = useLoaderData()
+
+    const {_id, selarName, email, name, photoUrl, subCategory, price, rating, quantity, description } = datas
 
 
     const addToyForm = event => {
@@ -8,7 +13,7 @@ const UpdateToy = () => {
         const form = event.target;
         const selarName = form.selarName.value;
         const email = form.email.value;
-        const name = form.name.value;
+        const productName = form.productName.value;
         const photoUrl = form.photoUrl.value;
         const subCategory = form.subCategory.value;
         const price = form.price.value;
@@ -16,12 +21,12 @@ const UpdateToy = () => {
         const quantity = form.quantity.value;
         const description = form.description.value;
 
-        const addInfo = { selarName, email, name, photoUrl, subCategory, price, rating, quantity, description }
+        const addInfo = { selarName, email, productName, photoUrl, subCategory, price, rating, quantity, description }
 
         console.log(addInfo)
 
-        fetch('http://localhost:5000/cameras', {
-            method: "POST",
+        fetch(`https://toys-server-site.vercel.app/cameras/${_id}`, {
+            method: "PUT",
             headers: {
                 "content-type": "application/json"
             },
@@ -42,25 +47,24 @@ const UpdateToy = () => {
                     <div className="grid md:grid-cols-2 gap-8" >
                         <div>
                             <label className="block mb-4 font-bold">Seller Name</label>
-                            <input className="border px-3 py-3 w-full rounded-md"  type="text" name="selarName"/>
+                            <input className="border px-3 py-3 w-full rounded-md"  type="text" name="selarName" defaultValue={selarName}/>
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Email</label>
-                            <input className="border px-3 py-3 w-full rounded-md"  type="text" name="email"/>
+                            <input className="border px-3 py-3 w-full rounded-md"  type="text" name="email" defaultValue={email}/>
                         </div>
                         <div>
-                            <label className="block mb-4 font-bold">Name</label>
-                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="name"/>
+                            <label className="block mb-4 font-bold">Product Name</label>
+                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="productName" defaultValue={name}/>
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Picture URL</label>
-                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="photoUrl"/>
+                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="photoUrl" defaultValue={photoUrl}/>
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Sub-category</label>
-                            {/* <input className="border px-3 py-3 w-full rounded-md" type="select" name="subCategory" placeholder="Sub-category" /> */}
                             <select name="subCategory" className="border px-3 py-3 w-full rounded-md">
-                                <option disabled selected></option>
+                                <input defaultValue={subCategory} />
                                 <option>Drone</option>
                                 <option>DSLR</option>
                                 <option>HD Camera</option>
@@ -68,20 +72,20 @@ const UpdateToy = () => {
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Price</label>
-                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="price"/>
+                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="price" defaultValue={price}/>
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Rating</label>
-                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="rating"/>
+                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="rating" defaultValue={rating}/>
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Available quantity</label>
-                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="quantity"/>
+                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="quantity" defaultValue={quantity}/>
                         </div>
                     </div>
                     <div>
                         <label className="block my-4 font-bold">Detail description</label>
-                        <textarea className="border px-3 py-3 w-full  h-[200px] rounded-md"  name="description"></textarea>
+                        <textarea className="border px-3 py-3 w-full  h-[200px] rounded-md"  name="description" defaultValue={description}></textarea>
                     </div>
                     <div className="mt-10">
                         <input className="btn btn-outline w-full font-bold hover:bg-gray-500" type="submit" value="Add A Toy" />

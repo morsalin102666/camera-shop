@@ -15,9 +15,9 @@ const AllToyDetail = () => {
                         <h2 className="text-[18px] font-semibold mt-2 mb-14">Eamail :    {email}</h2>
                         <h3 className="text-[20px] font-bold mb-2">Product Name :   {productName} Drone Camera</h3>
                         <p className="text-[20px] font-medium mb-2">Sub-Category :  {subCategory}</p>
-                        <p className="text-[20px] font-medium mb-2">Price :  {price}</p>
+                        <p className="text-[20px] font-medium mb-2">Price :  ${price}</p>
                         <p className="text-[20px] font-medium mb-2">Rating :     {rating} Star</p>
-                        <p className="text-[20px] font-medium mb-2">Available :  {quantity}</p>
+                        <p className="text-[20px] font-medium mb-2">Available :  {quantity} Items</p>
                     </div>
                 </div>
                 <div className=" h-full md:border-x-2 md:ps-7 md:border-indigo-200">

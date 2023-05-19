@@ -1,7 +1,19 @@
 import { Link } from "react-router-dom";
 
 const ShowMyToy = ({ toy }) => {
+
     const { _id, productName, selarName, photoUrl, subCategory, price, quantity, } = toy
+
+    const deletPost = _id => {
+        fetch(`https://toys-server-site.vercel.app/cameras/${_id}`, {
+            method: "DELETE"
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+        })
+    }
+
     return (
         <tr>
             <td>
@@ -22,10 +34,10 @@ const ShowMyToy = ({ toy }) => {
                 <Link to={`/allToyDetail/${_id}`} className="btn btn-gray">Details</Link>
             </th>
             <th>
-                <Link to={`/updateToy`} className="btn btn-gray">Update</Link>
+                <Link to={`/updateToy/${_id}`} className="btn btn-gray">Update</Link>
             </th>
             <th>
-                <button className="btn btn-gray">Delete</button>
+                <button onClick={ () => deletPost(_id)} className="btn btn-gray">Delete</button>
             </th>
         </tr>);
 };

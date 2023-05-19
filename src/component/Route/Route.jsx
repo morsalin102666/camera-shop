@@ -27,7 +27,7 @@ const router = createBrowserRouter([
             {
                 path: "allToyDetail/:id",
                 element: <PrivetRoute><AllToyDetail></AllToyDetail></PrivetRoute>,
-                loader: ({params}) => fetch(`http://localhost:5000/cameras/${params.id}`)
+                loader: ({params}) => fetch(`https://toys-server-site-morsalin102666.vercel.app/cameras/${params.id}`)
             },
             {
                 path: '/myToy',
@@ -42,8 +42,9 @@ const router = createBrowserRouter([
                 element: <Blog></Blog>
             },
             {
-                path: '/updateToy',
-                element: <UpdateToy></UpdateToy>
+                path: '/updateToy/:id',
+                element: <UpdateToy></UpdateToy>,
+                loader: ({params}) => fetch(`https://toys-server-site-morsalin102666.vercel.app/cameras/${params.id}`)
             },
             {
                 path: '/login',

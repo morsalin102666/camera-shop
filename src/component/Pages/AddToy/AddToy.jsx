@@ -23,7 +23,7 @@ const AddToy = () => {
 
         console.log(addInfo)
 
-        fetch('http://localhost:5000/cameras', {
+        fetch('https://toys-server-site-morsalin102666.vercel.app/cameras', {
             method: "POST",
             headers: {
                 "content-type" : "application/json"
