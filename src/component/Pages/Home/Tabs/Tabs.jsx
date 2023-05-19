@@ -1,15 +1,30 @@
 import TabeOne from '../TabOne/TabeOne';
 import './Tabs.css'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const Tabs = () => {
 
     const [toggleState, setToggleState] = useState(1);
+    const [post, setPost] = useState([])
+    const [drone, setDrone] = useState([])
+    console.log(drone)
 
-  const toggleTab = (index) => {
-    setToggleState(index);
-  };
+    const toggleTab = (index) => {
+        setToggleState(index);
+    };
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/cameras`)
+            .then(res => res.json())
+            .then(data => setPost(data))
+    }, [])
+
+    {
+        post.map(p => console.log(p))
+    }
+
+
 
     return (
         <div>
@@ -19,7 +34,7 @@ const Tabs = () => {
                         className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
                         onClick={() => toggleTab(1)}
                     >
-                        Dron
+                        Drone
                     </button>
                     <button
                         className={toggleState === 2 ? "tabs active-tabs" : "tabs"}
@@ -39,7 +54,7 @@ const Tabs = () => {
                     <div
                         className={toggleState === 1 ? "content  active-content" : "content"}
                     >
-                        <h2>Dron camera</h2>
+                        <h2>Drone camera</h2>
                         <hr />
                         <TabeOne></TabeOne>
                     </div>

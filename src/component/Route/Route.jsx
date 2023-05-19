@@ -8,6 +8,7 @@ import Blog from "../Pages/Blog/Blog";
 import PrivetRoute from "../PrivetRoute/PrivetRoute";
 import MyToy from "../Pages/MyToy/MyToy";
 import AddToy from "../Pages/AddToy/AddToy";
+import UpdateToy from "../Pages/UpdateToy/UpdateToy";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/updateToy',
+                element: <UpdateToy></UpdateToy>
             },
             {
                 path: '/login',
