@@ -10,6 +10,7 @@ import AddToy from "../Pages/AddToy/AddToy";
 import UpdateToy from "../Pages/UpdateToy/UpdateToy";
 import AllToyDetail from "../Pages/AllToy/AllToyDetail/AllToyDetail";
 import MyToy from "../Pages/MyToy/MyToy/MyToy";
+import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
     {
@@ -54,8 +55,12 @@ const router = createBrowserRouter([
                 path: '/signUp',
                 element: <SingUp></SingUp>
             },
-        ]
+        ],
     },
+    {
+        path: '*',
+        element: <ErrorPage></ErrorPage>
+    }
 ]);
 
 export default router

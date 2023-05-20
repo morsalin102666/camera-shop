@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import { FaGithub, FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
     const navigate = useNavigate()
@@ -79,8 +80,8 @@ const Login = () => {
                                 <button className="btn bg-[gray] hover:bg-[gray]">Login</button>
                             </div>
                             <div className=" mt-5">
-                                <button onClick={googeLogin} className="w-[100%] rounded btn btn-outline hover:bg-[gray] mb-3">Sign in with Google</button>
-                                <button onClick={githubLogin} className="w-[100%] rounded btn btn-outline hover:bg-[gray]">Sign in with Github</button>
+                                <button onClick={googeLogin} className="w-[100%] rounded btn btn-outline hover:bg-[gray] mb-3"><FaGoogle className="mr-3"></FaGoogle> Sign in with Google</button>
+                                <button onClick={githubLogin} className="w-[100%] rounded btn btn-outline hover:bg-[gray]"><FaGithub className="mr-3"></FaGithub> Sign in with Github</button>
                             </div>
                             <Link className="mt-5 text-center hover:underline" to={'/signUp'}><p >New user to create a account <span className="font-bold text-blue-900">Sign up</span></p></Link>
                         </form>

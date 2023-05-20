@@ -88,7 +88,7 @@ const UpdateToy = () => {
                         <textarea className="border px-3 py-3 w-full  h-[200px] rounded-md"  name="description" defaultValue={description}></textarea>
                     </div>
                     <div className="mt-10">
-                        <input className="btn btn-outline w-full font-bold hover:bg-gray-500" type="submit" value="Add A Toy" />
+                        <input className="btn btn-outline w-full font-bold hover:bg-gray-500" type="submit" value="Update Toy" />
                     </div>
                 </form>
             </div>
