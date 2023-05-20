@@ -5,7 +5,7 @@ const UpdateToy = () => {
 
     const datas = useLoaderData()
 
-    const {_id, selarName, email, name, photoUrl, subCategory, price, rating, quantity, description } = datas
+    const {_id, selarName, email, productName, photoUrl, subCategory, price, rating, quantity, description } = datas
 
 
     const addToyForm = event => {
@@ -24,7 +24,6 @@ const UpdateToy = () => {
 
         const addInfo = { selarName, email, productName, photoUrl, subCategory, price, rating, quantity, description }
 
-        console.log(addInfo)
 
         fetch(`https://toys-server-site.vercel.app/cameras/${_id}`, {
             method: "PUT",
@@ -64,7 +63,7 @@ const UpdateToy = () => {
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Product Name</label>
-                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="productName" defaultValue={name}/>
+                            <input className="border px-3 py-3 w-full rounded-md" type="text" name="productName" defaultValue={productName}/>
                         </div>
                         <div>
                             <label className="block mb-4 font-bold">Picture URL</label>

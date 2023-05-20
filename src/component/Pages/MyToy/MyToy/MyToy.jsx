@@ -12,9 +12,25 @@ const MyToy = () => {
             .then(data => setMyToy(data))
     }, [])
 
+    const ascending = () => {
+        fetch(`https://toys-server-site-morsalin102666.vercel.app/ascending?email=${user.email}`)
+            .then(res => res.json())
+            .then(data => setMyToy(data))
+    }
+
+    const descending = () => {
+        fetch(`https://toys-server-site-morsalin102666.vercel.app/descending?email=${user.email}`)
+            .then(res => res.json())
+            .then(data => setMyToy(data))
+    }
+
     return (
         <div className="container mx-auto px-4 md:px-0">
             <div className="overflow-x-auto w-full">
+                <div className="mb-5">
+                    <button onClick={ascending} className="btn btn-primary mr-[20px]">ascending</button>
+                    <button onClick={descending} className="btn btn-primary">descending </button>
+                </div>
                 <table className="table w-full">
                     {/* head */}
                     <thead>

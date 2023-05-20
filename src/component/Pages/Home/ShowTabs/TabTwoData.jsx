@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
 
-const TabTwoData = ({data}) => {
+const TabTwoData = ({ data }) => {
 
-    const {_id, productName, photoUrl, price, rating } = data
+    const { _id, productName, photoUrl, price, rating } = data
 
     return (
         <div>

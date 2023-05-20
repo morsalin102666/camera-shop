@@ -87,7 +87,7 @@ const Tabs = () => {
                     <div
                         className={toggleState === 2 ? "content  active-content" : "content"}
                     >
-                        <h2>Dslr</h2>
+                        <h2>DSLR</h2>
                         <hr />
                         <div className='md:flex justify-between items-center'>
                             {
