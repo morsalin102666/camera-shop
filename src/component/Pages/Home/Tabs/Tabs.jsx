@@ -44,7 +44,9 @@ const Tabs = () => {
 
     return (
         <div>
-            <div className="containers">
+            <div data-aos="flip-left"
+                data-aos-easing="ease-out-cubic"
+                data-aos-duration="2000" className="containers">
                 <div className="bloc-tabs">
                     <button
                         className={toggleState === 1 ? "tabs active-tabs" : "tabs"}
@@ -72,7 +74,7 @@ const Tabs = () => {
                     >
                         <h2>Drone camera</h2>
                         <hr />
-                        <div className='md:flex justify-between items-center'>
+                        <div className='md:flex justify-between items-center border'>
                             {
                                 drones.slice(0, 2).map(data => <TabOneDataShow
                                     key={data._id}

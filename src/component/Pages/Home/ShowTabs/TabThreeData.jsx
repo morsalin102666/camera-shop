@@ -15,7 +15,7 @@ const TabThreeData = ({data}) => {
                             <p className=" md:mt-5 md:mb-4 md:text-[25px]"><span className="font-semibold">Product Name : {productName}</span> </p>
                             <p className="md:mb-4"><span className="font-semibold">Price : ${price}</span> </p>
                             <p className="md:mb-4"><span className="font-semibold">Rating : {rating} Star</span></p>
-                            <div className="card-actions justify-end mt-6 md:mt-[120px]">
+                            <div className="card-actions justify-end mt-6 md:mt-[100px]">
                                 <Link to={`/allToyDetail/${_id}`} className="btn btn-primary w-full">View Details</Link>
                             </div>
                         </div>
