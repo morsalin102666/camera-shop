@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const SingUp = () => {
     const [error, setError] = useState('')
@@ -20,8 +21,13 @@ const SingUp = () => {
         if (password.length >= 6) {
             createNewUser(email, password)
                 .then(result => {
-                    alert('success signUp')
-                    console.log(result)
+                    Swal.fire({
+                        title: 'Compleate SignUp',
+                        text: 'Thank you success your signUp',
+                        icon: 'Success',
+                        confirmButtonText: 'ok'
+                      })
+                      console.log(result)
                     updateProfileUser(userName, photoUrl)
                     form.reset()
                 })

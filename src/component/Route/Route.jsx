@@ -26,7 +26,7 @@ const router = createBrowserRouter([
                 element: <AllToy></AllToy>
             },
             {
-                path: "allToyDetail/:id",
+                path: "/allToyDetail/:id",
                 element: <PrivetRoute><AllToyDetail></AllToyDetail></PrivetRoute>,
                 loader: ({params}) => fetch(`https://toys-server-site-morsalin102666.vercel.app/cameras/${params.id}`)
             },

@@ -20,7 +20,7 @@ const AllToyDetail = () => {
                         <p className="text-[20px] font-medium mb-2">Available :  {quantity} Items</p>
                     </div>
                 </div>
-                <div className=" h-full md:border-x-2 md:px-7  md:border-indigo-200">
+                <div className="w-full h-full md:border-x-2 md:px-7  md:border-indigo-200">
                     <h1 className="text-[25px] font-bold">** Product Description ** </h1>
                     <p className="pt-3"><span className="text-[17px] font-bold pe-4">Description : </span>{description}</p>
                 </div>

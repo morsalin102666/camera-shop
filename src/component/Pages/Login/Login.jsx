@@ -22,7 +22,6 @@ const Login = () => {
 
         logInEmail(email, password)
             .then(result => {
-                console.log(result)
                 navigate(from, { replace: true });
                 form.reset()
 
@@ -35,7 +34,6 @@ const Login = () => {
         setError('')
         signinGoogel()
         .then(result => {
-            console.log(result)
             navigate(from, { replace: true });
         })
         .catch(error => {setError(error.message)})
