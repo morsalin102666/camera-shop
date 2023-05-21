@@ -22,7 +22,6 @@ const AddToy = () => {
 
         const addInfo = { selarName, email, productName, photoUrl, subCategory, price, rating, quantity, description }
 
-        console.log(addInfo)
 
         fetch('https://toys-server-site-morsalin102666.vercel.app/cameras', {
             method: "POST",

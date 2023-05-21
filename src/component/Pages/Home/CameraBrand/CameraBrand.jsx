@@ -19,9 +19,8 @@ const CameraBrand = () => {
                 </div>
                 <div>
                     <img data-aos="fade-left"
-                        data-aos-anchor="#example-anchor"
-                        data-aos-offset="500"
-                        data-aos-duration="500" className="w-[300px] h-[300px] rounded-full" src="https://direporter.com/wp-content/uploads/2021/07/Nikon-Inc-USA-HQ.jpg" alt="" />
+                        data-aos-offset="300"
+                        data-aos-easing="ease-in-sine" className="w-[300px] h-[300px] rounded-full" src="https://direporter.com/wp-content/uploads/2021/07/Nikon-Inc-USA-HQ.jpg" alt="" />
                 </div>
             </div>
         </div>
