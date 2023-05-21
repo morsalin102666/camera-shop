@@ -2,8 +2,12 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../../AuthProvider/AuthProvider";
 import ShowMyToy from "../ShowMyToy/ShowMyToy";
 import Swal from "sweetalert2";
+import Spinner from "../../../Spinner/Spinner";
+import useTitel from "../../../UseTitel/UseTitle";
 
 const MyToy = () => {
+    useTitel('My Post')
+    const [loading, setLoading] = useState(true)
     const { user } = useContext(AuthContext)
     const [myToy, setMyToy] = useState([])
 
@@ -11,6 +15,7 @@ const MyToy = () => {
         fetch(`https://toys-server-site-morsalin102666.vercel.app/camera?email=${user.email}`)
             .then(res => res.json())
             .then(data => setMyToy(data))
+            setLoading(false)
     }, [])
 
     const ascending = () => {
@@ -56,12 +61,16 @@ const MyToy = () => {
         })
     }
 
+    if(loading){
+        return <div className="flex justify-center py-5"><Spinner></Spinner></div>
+    }
+
     return (
         <div className="container mx-auto px-4 md:px-0">
             <div className="overflow-x-auto w-full">
                 <div className="mb-5">
-                    <button onClick={ascending} className="btn btn-primary mr-[20px]">ascending</button>
-                    <button onClick={descending} className="btn btn-primary">descending </button>
+                    <button onClick={ascending} className="btn text-black border-none hover:text-white bg-gray-300 mr-[20px]">ascending</button>
+                    <button onClick={descending} className="btn text-black border-none hover:text-white bg-gray-300">descending </button>
                 </div>
                 <table className="table w-full">
                     {/* head */}

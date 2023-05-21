@@ -1,9 +1,11 @@
 import { useContext } from "react";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import useTitel from "../../UseTitel/UseTitle";
 
 const AddToy = () => {
-
+    
+    useTitel('Add Post')
     const { user } = useContext(AuthContext)
 
     const addToyForm = event => {

@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react";
 import ShowToy from "../ShowToy/ShowToy";
+import Spinner from "../../../Spinner/Spinner";
+import useTitel from "../../../UseTitel/UseTitle";
 
 const AllToy = () => {
 
+    useTitel('All Post')
+    const [loading, setLoading] = useState(true)
     const [datas, setAllData] = useState([])
+
+
+
 
 
     useEffect(() => {
         fetch(`https://toys-server-site-morsalin102666.vercel.app/cameras`)
             .then(res => res.json())
             .then(data => setAllData(data))
+        setLoading(false)
     }, [])
 
     const search = e => {
@@ -19,7 +27,9 @@ const AllToy = () => {
             .then(data => setAllData(data))
     }
 
-    
+    if (loading) {
+        return <div className="flex justify-center py-5"><Spinner></Spinner></div>
+    }
 
     return (
         <div>
@@ -33,7 +43,7 @@ const AllToy = () => {
                             </button>
                         </div>
                     </div>
-                    
+
                 </div>
                 <div className="overflow-x-auto w-full">
                     <table className="table w-full">

@@ -11,7 +11,7 @@ const Header = () => {
     }
 
     const menuItem = <>
-        <li><ActiveRoute to={'/'}>Home</ActiveRoute></li>
+        <li className="bg-none hover:bg-none active:bg-none focus:bg-none"><ActiveRoute to={'/'}>Home</ActiveRoute></li>
         <li><ActiveRoute to={'/allToy'}>All Toy</ActiveRoute></li>
         {
             user && <li><ActiveRoute to={'/myToy'}>My Toy</ActiveRoute></li>
@@ -35,7 +35,12 @@ const Header = () => {
                             {menuItem}
                         </ul>
                     </div>
-                    <Link to={'/'} className="btn btn-ghost normal-case text-xl text-[35px] font-bold">Camera Shop <img className="w-[50px]" src="https://www.freepnglogos.com/uploads/camera-logo-png/artful-wonder-photography-logo-10.png" alt="" /></Link>
+                    <Link to={'/'} className="btn btn-ghost normal-case text-xl text-[35px] font-bold">
+                        <i>
+                            <span className="text-[50px] font-extrabold font-serif text-[]">C</span>
+                            <span className="text-[20px]">amera Shop</span>
+                        </i>
+                        <img className="w-[50px]" src="https://www.freepnglogos.com/uploads/camera-logo-png/artful-wonder-photography-logo-10.png" alt="" /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">

@@ -1,8 +1,10 @@
 import { useLoaderData } from "react-router-dom";
+import useTitel from "../../../UseTitel/UseTitle";
 
 const AllToyDetail = () => {
+    useTitel('Toy Details Page')
     const detail = useLoaderData()
-    const { selarName, email, productName, photoUrl, subCategory, price, rating, quantity, description } = detail
+    const { selarName, email, productName, photoUrl, subCategory, price, rating, quantity, description } = detail;
     return (
         <div className="container mx-auto px-4 md:px-0 md:py-7">
             <div className="grid md:grid-cols-3 gap-7">

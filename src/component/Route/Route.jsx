@@ -15,7 +15,11 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 const router = createBrowserRouter([
     {
         path: "/",
+
+        errorElement: <ErrorPage></ErrorPage>,
+
         element: <App></App>,
+        
         children: [
             {
                 path: '/',
@@ -57,10 +61,6 @@ const router = createBrowserRouter([
             },
         ],
     },
-    {
-        path: '*',
-        element: <ErrorPage></ErrorPage>
-    }
 ]);
 
 export default router

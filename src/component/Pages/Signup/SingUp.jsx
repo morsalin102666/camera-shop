@@ -2,8 +2,10 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import useTitel from "../../UseTitel/UseTitle";
 
 const SingUp = () => {
+    useTitel('Sign Up Page')
     const [error, setError] = useState('')
     const { createNewUser, updateUserProfile } = useContext(AuthContext)
 
@@ -87,7 +89,7 @@ const SingUp = () => {
                             </div>
                             <p className="mt-5 ml-3">{error}</p>
                             <div className="form-control mt-6">
-                                <button className="btn btn-[gray]">Sign Up</button>
+                                <button className="btn text-black border-none hover:text-white bg-gray-300">Sign Up</button>
                             </div>
                             <Link className="mt-5 text-center hover:underline" to={'/login'}><p >Alrady have a account to <span className="font-bold text-blue-900">Login</span></p></Link>
                         </form>

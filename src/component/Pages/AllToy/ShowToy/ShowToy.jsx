@@ -19,7 +19,7 @@ const ShowToy = ({ data }) => {
             <td>${price}</td>
             <td>{quantity} Items</td>
             <th>
-                <Link to={`/allToyDetail/${_id}`} className="btn btn-gray">Details</Link>
+                <Link to={`/allToyDetail/${_id}`} className="btn text-black border-none hover:text-white bg-gray-300">Details</Link>
             </th>
         </tr>);
 };

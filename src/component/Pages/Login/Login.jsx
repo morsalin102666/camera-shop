@@ -2,8 +2,10 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { FaGithub, FaGoogle } from 'react-icons/fa';
+import useTitel from "../../UseTitel/UseTitle";
 
 const Login = () => {
+    useTitel('Login Page')
     const navigate = useNavigate()
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
@@ -75,11 +77,11 @@ const Login = () => {
                             </div>
                             <p className="mt-5 ml-3">{error}</p>
                             <div className="form-control mt-6">
-                                <button className="btn bg-[gray] hover:bg-[gray]">Login</button>
+                                <button className="btn text-black border-none hover:text-white bg-gray-300">Login</button>
                             </div>
                             <div className=" mt-5">
-                                <button onClick={googeLogin} className="w-[100%] rounded btn btn-outline hover:bg-[gray] mb-3"><FaGoogle className="mr-3"></FaGoogle> Sign in with Google</button>
-                                <button onClick={githubLogin} className="w-[100%] rounded btn btn-outline hover:bg-[gray]"><FaGithub className="mr-3"></FaGithub> Sign in with Github</button>
+                                <button onClick={googeLogin} className="w-[100%] rounded btn text-black border-none hover:text-white bg-gray-300 mb-3"><FaGoogle className="mr-3"></FaGoogle> Sign in with Google</button>
+                                <button onClick={githubLogin} className="w-[100%] rounded btn text-black border-none hover:text-white bg-gray-300"><FaGithub className="mr-3"></FaGithub> Sign in with Github</button>
                             </div>
                             <Link className="mt-5 text-center hover:underline" to={'/signUp'}><p >New user to create a account <span className="font-bold text-blue-900">Sign up</span></p></Link>
                         </form>

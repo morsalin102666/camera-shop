@@ -1,4 +1,5 @@
 
+import Spinner from '../../../Spinner/Spinner';
 import TabOneDataShow from '../ShowTabs/TabOneDataShow';
 import TabThreeData from '../ShowTabs/TabThreeData';
 import TabTwoData from '../ShowTabs/TabTwoData';
@@ -8,10 +9,13 @@ import { useEffect, useState } from "react";
 
 const Tabs = () => {
 
+    const [loading, setLoading] = useState(true)
     const [toggleState, setToggleState] = useState(1);
     const [drones, setDrones] = useState([])
     const [dslrs, setDslr] = useState([])
     const [hdCam, setHdCam] = useState([])
+
+
 
 
     const toggleTab = (index) => {
@@ -24,23 +28,28 @@ const Tabs = () => {
         fetch(`https://toys-server-site.vercel.app/cetagorys?subCategory=Drone`)
             .then(res => res.json())
             .then(data => setDrones(data))
+        setLoading(false)
     }, [])
 
     useEffect(() => {
         fetch(`https://toys-server-site.vercel.app/cetagorys?subCategory=DSLR`)
             .then(res => res.json())
             .then(data => setDslr(data))
+        setLoading(false)
     }, [])
 
     useEffect(() => {
         fetch(`https://toys-server-site.vercel.app/cetagorys?subCategory=HD Camera`)
             .then(res => res.json())
             .then(data => setHdCam(data))
+        setLoading(false)
     }, [])
 
 
 
-
+    if (loading) {
+        return <div className="flex justify-center py-5"><Spinner></Spinner></div>
+    }
 
     return (
         <div>
