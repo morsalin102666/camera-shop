@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
+import ActiveRoute from "../../ActiveRoute/ActiveRoute";
 
 const Header = () => {
 
@@ -8,6 +9,19 @@ const Header = () => {
     const logOutButton = () => {
         logOutEmail()
     }
+
+    const menuItem = <>
+        <li><ActiveRoute to={'/'}>Home</ActiveRoute></li>
+        <li><ActiveRoute to={'/allToy'}>All Toy</ActiveRoute></li>
+        {
+            user && <li><ActiveRoute to={'/myToy'}>My Toy</ActiveRoute></li>
+        }
+        {
+            user && <li><ActiveRoute to={'/addToy'}>Add A Toy</ActiveRoute></li>
+        }
+        <li><ActiveRoute to={'/blog'}>Blogs</ActiveRoute></li>
+        <li><ActiveRoute to={'/signUp'}>SignUp</ActiveRoute></li>
+    </>
 
     return (
         <div className="bg-base-300 mb-[50px]">
@@ -18,32 +32,14 @@ const Header = () => {
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
                         <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-                            <li><Link to={'/'}>Home</Link></li>
-                            <li><Link to={'/allToy'}>All Toy</Link></li>
-                            {
-                                user && <>
-                                    <li><Link to={'/myToy'}>My Toy</Link></li>
-                                    <li><Link to={'/addToy'}>Add A Toy</Link></li>
-                                </>
-                            }
-                            <li><Link to={'/blog'}>Blogs</Link></li>
-                            <li><Link to={'/signUp'}>SignUp</Link></li>
+                            {menuItem}
                         </ul>
                     </div>
                     <Link to={'/'} className="btn btn-ghost normal-case text-xl text-[35px] font-bold">Camera Shop <img className="w-[50px]" src="https://www.freepnglogos.com/uploads/camera-logo-png/artful-wonder-photography-logo-10.png" alt="" /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
-                        <li><Link to={'/'}>Home</Link></li>
-                        <li><Link to={'/allToy'}>All Toy</Link></li>
-                        {
-                            user && <>
-                                <li><Link to={'/myToy'}>My Toy</Link></li>
-                                <li><Link to={'/addToy'}>Add A Toy</Link></li>
-                            </>
-                        }
-                        <li><Link to={'/blog'}>Blogs</Link></li>
-                        <li><Link to={'/signUp'}>SignUp</Link></li>
+                        {menuItem}
                     </ul>
                 </div>
                 <div className="navbar-end">
