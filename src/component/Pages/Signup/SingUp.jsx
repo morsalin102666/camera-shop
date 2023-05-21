@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import useTitel from "../../UseTitel/UseTitle";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
 const SingUp = () => {
+    const [open, setOpen] = useState(false)
     useTitel('Sign Up Page')
     const [error, setError] = useState('')
     const { createNewUser, updateUserProfile } = useContext(AuthContext)
@@ -28,8 +30,8 @@ const SingUp = () => {
                         text: 'Thank you success your signUp',
                         icon: 'Success',
                         confirmButtonText: 'ok'
-                      })
-                      console.log(result)
+                    })
+                    console.log(result)
                     updateProfileUser(userName, photoUrl)
                     form.reset()
                 })
@@ -47,8 +49,8 @@ const SingUp = () => {
                 displayName: userName
             }
             updateUserProfile(profile)
-            .then(result => {console.log(result.user)})
-            .catch(error => {setError(error.message)})
+                .then(result => { console.log(result.user) })
+                .catch(error => { setError(error.message) })
         }
 
 
@@ -85,7 +87,10 @@ const SingUp = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" required name="password" placeholder="password" className="input input-bordered" />
+                                <input type={open ? "text" : "password"} required name="password" placeholder="password" className="input input-bordered" />
+                                <div className="w-8 h-8 flex justify-center items-center md:ml-[590px] ml-[270px] mt-[-40px]" onClick={() => setOpen(!open)}>
+                                    <span>{open === true ? <AiFillEye></AiFillEye> : <AiFillEyeInvisible></AiFillEyeInvisible>}</span>
+                                </div>
                             </div>
                             <p className="mt-5 ml-3">{error}</p>
                             <div className="form-control mt-6">

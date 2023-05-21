@@ -2,9 +2,11 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import { FaGithub, FaGoogle } from 'react-icons/fa';
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import useTitel from "../../UseTitel/UseTitle";
 
 const Login = () => {
+    const [open, setOpen] = useState(false)
     useTitel('Login Page')
     const navigate = useNavigate()
     let location = useLocation();
@@ -35,10 +37,10 @@ const Login = () => {
     const googeLogin = () => {
         setError('')
         signinGoogel()
-        .then(result => {
-            navigate(from, { replace: true });
-        })
-        .catch(error => {setError(error.message)})
+            .then(result => {
+                navigate(from, { replace: true });
+            })
+            .catch(error => { setError(error.message) })
     }
 
 
@@ -46,11 +48,11 @@ const Login = () => {
     const githubLogin = () => {
         setError('')
         signinGithub()
-        .then(result => {
-            console.log(result)
-            navigate(from, { replace: true });
-        })
-        .catch(error => {setError(error.message)})
+            .then(result => {
+                console.log(result)
+                navigate(from, { replace: true });
+            })
+            .catch(error => { setError(error.message) })
     }
 
     return (
@@ -70,9 +72,13 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" required name="password" placeholder="password" className="input input-bordered" />
+
+                                <input type={open ? "text" : "password"} required name="password" placeholder="password" className="input input-bordered" />
+                                <div className="w-8 h-8 flex justify-center items-center md:ml-[590px] ml-[270px] mt-[-40px]" onClick={() => setOpen(!open)}>
+                                    <span>{open === true ? <AiFillEye></AiFillEye> : <AiFillEyeInvisible></AiFillEyeInvisible>}</span>
+                                </div>
                                 <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+                                    <a href="#" className="label-text-alt mt-5 link link-hover">Forgot password?</a>
                                 </label>
                             </div>
                             <p className="mt-5 ml-3">{error}</p>
